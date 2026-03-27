@@ -588,6 +588,12 @@ void make_threebodybinary(double P_3bb, long k1, long k2, long k3, long form_bin
 	vs_cmf[2] = vs_cmf[0] * sin(angle3) * sin(angle4);
 	vs_cmf[3] = vs_cmf[0] * cos(angle3);
 
+	/* Fix direction of velocity of binary to be opposite to that of single - add Pi to each of the angles 
+		(polar angle and azimuthal) that were used to orient the velocity of the single  */
+	vb_cmf[1] = vb_cmf[0] * sin(PI - angle3) * cos(angle4 + PI);
+	vb_cmf[2] = vb_cmf[0] * sin(PI - angle3) * sin(angle4 + PI);
+	vb_cmf[3] = vb_cmf[0] * cos(PI - angle3);
+
     vs_cmf[0] = sqrt(sqr(vs_cmf[1]) + sqr(vs_cmf[2]) + sqr(vs_cmf[3]));
 	vb_cmf[0] = sqrt(sqr(vb_cmf[1]) + sqr(vb_cmf[2]) + sqr(vb_cmf[3]));
 
