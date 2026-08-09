@@ -685,9 +685,9 @@ typedef struct{
 * @brief toggles three-body binary formation (0=off, 1=on w/ pairing by mass, 2=on w/ pairing at random)
 */
 	int THREEBODYBINARIES;
-#define PARAMDOC_BINARY_HARDNESS_POWER "power law index for hardness of newly formed three-body binaries"
+#define PARAMDOC_BINARY_HARDNESS_POWER "power law index for hardness of newly formed three-body binaries (default is -5.5)"
 /**
- * @brief Power-law index for hardness of three-body binaries (default is -3.0).
+ * @brief Power-law index for hardness of three-body binaries (default is -5.5).
  */
 	double BINARY_HARDNESS_POWER;
 #define PARAMDOC_MIN_BINARY_HARDNESS "minimum hardness for newly formed three-body binaries"
