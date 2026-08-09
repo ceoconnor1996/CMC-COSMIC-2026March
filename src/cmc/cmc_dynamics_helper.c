@@ -478,7 +478,7 @@ double get_eta(double eta_min, double eta_power, long k1, long k2, long k3, doub
 		comp_ymax = kk * norm * pow(eta_test, 1.+eta_power);
 		comp_y = rng_t113_dbl_new(curr_st)*comp_ymax;
 		/* now accept or reject the point if it lies below/above true distribution: */
-        true_y = norm*(pow(eta_min,eta_power) - pow(eta_test,1.+eta_power)) + (2.+kk)*(pow(eta_min,1.+eta_power) - pow(eta_test,1.+eta_power)) + 2.*kk*(pow(eta_min,2.+eta_power) - pow(eta_test,2.+eta_power));
+        true_y = norm*(pow(eta_min,1.+eta_power) - pow(eta_test,1.+eta_power)) + (2.+kk)*(pow(eta_min,1.+eta_power) - pow(eta_test,1.+eta_power)) + 2.*kk*(pow(eta_min,2.+eta_power) - pow(eta_test,2.+eta_power));
         if (comp_y < true_y) { /* fall within true distribution */
 			found_eta = 1;
 			eta = eta_test;
@@ -538,6 +538,10 @@ void make_threebodybinary(double P_3bb, long k1, long k2, long k3, long form_bin
 	//starrad1=star[k1].rad;
 	//starrad2=star[k2].rad;
 	//rad3=star[k3].rad;
+
+	// Initial energy
+    PE_i = madhoc*(m1*star_phi[get_global_idx(k1)] + m2*star_phi[get_global_idx(k2)] + m3*star_phi[get_global_idx(k3)]);
+	KE_i = 0.5*madhoc*(m1 * sqr(v1[0]) + m2 * sqr(v2[0]) + m3 * sqr(v3[0]));
 
     // COM of candidate binary pair
 	binary_cm = (m1 * r1 + m2 * r2)/(m1 + m2);
